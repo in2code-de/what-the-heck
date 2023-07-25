@@ -24,18 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $yourName = $_POST['yourName'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
-    $date_of_birth = $_POST['birthday'];
-    $date_of_birth = time();
-    $privacy = $_POST['privacy'];
-    $comments = $_POST['remark'];
-    if (!$comments) {
-        $comments = 'keine ';
-    }
-    $sql = "INSERT INTO fe_users (yourName, password, date_of_birth, privacy, comments)
-VALUES ( '$yourName', '$password', '$date_of_birth' , 1, '$comments')";
-    echo $sql;
+    $sql = "Select * fe_users";
+
     if ($conn->query($sql) === true) {
         echo "New record created successfully";
     } else {

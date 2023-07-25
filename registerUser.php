@@ -75,6 +75,8 @@ function test_input($data)
     <?php
     echo "<h2>Your Input:</h2>";
     echo var_dump($_POST['yourName']);
+    echo "<br>";
+    echo var_dump($_POST['email']);
 
     echo "<br>";
     echo var_dump($_POST['password']);
