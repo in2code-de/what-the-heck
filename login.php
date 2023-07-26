@@ -26,12 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['mail'];
     $password = $_POST['password'];
-    $sql = sprintf("INSERT INTO fe_users(email, password) VALUES('$email', '$password');", $email, $password);
-
-    if ($conn->query($sql) === true) {
-        echo "New record created successfully";
+    $sql = "SELECT * from fe_users WHERE email='$email' AND password='$password';";
+    $row = $conn->query($sql);
+    if ($row->num_rows > 0) {
+        echo "Logged in successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Log in failed.";
     }
 
     $conn->close();
@@ -46,37 +46,5 @@ function test_input($data)
 }
 
 ?>
-
-
-<div class="container">
-    <h2>PHP Form Validation Example</h2>
-
-
-    <?php
-    echo "<h2>Your Input:</h2>";
-    echo var_dump($_POST['yourName']);
-
-    echo "<br>";
-    echo var_dump($_POST['mail']);
-
-    echo "<br>";
-
-    echo var_dump($_POST['password']);
-    echo "<br>";
-    echo var_dump($_POST['passwordRepeat']);
-
-    echo "<br>";
-    echo var_dump($_POST['birthday']);
-
-    echo "<br>";
-    echo var_dump($_POST['remark']);
-
-    echo "<br>";
-    echo var_dump($_POST['privacy']);
-
-    echo "<br>";
-    ?>
-
-</div>
 
 </html>
