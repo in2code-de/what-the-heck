@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_POST['email'];
+    $email = $_POST['mail'];
     $password = $_POST['password'];
     $sql = "Select * fe_users";
 
