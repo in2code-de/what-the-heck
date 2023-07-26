@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['mail'];
     $password = $_POST['password'];
-    $sql = "Select * fe_users";
+    $sql = sprintf("INSERT INTO fe_users(email, password) VALUES('$email', '$password');", $email, $password);
 
     if ($conn->query($sql) === true) {
         echo "New record created successfully";
@@ -57,7 +57,7 @@ function test_input($data)
     echo var_dump($_POST['yourName']);
 
     echo "<br>";
-    echo var_dump($_POST['email']);
+    echo var_dump($_POST['mail']);
 
     echo "<br>";
 
